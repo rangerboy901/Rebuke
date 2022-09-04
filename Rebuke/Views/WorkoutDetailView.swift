@@ -58,11 +58,8 @@ struct WorkoutDetailView: View {
                     )}
                     VStack(alignment: .leading, spacing: 20) {
                         Section(header: Text("Workout Details")) {
-                            HStack {
-                                Text("Name: ")
-                                    .font(.system(size: 22, weight: .bold, design: .default))
-                                Spacer()
-                                Text("Name: \(workout.title)")
+                            
+                                Text("\(workout.title)")
                                 
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding()
@@ -71,10 +68,6 @@ struct WorkoutDetailView: View {
                                     .font(.system(size: 20, weight: .semibold, design: .default))
                                     .foregroundColor(self.colorize(type: workout.type ))
                             }
-                            HStack {
-                                Text("Objective:  ")
-                                    .font(.system(size: 22, weight: .bold, design: .default))
-                                Spacer()
                                 Text("\(workout.objective)")
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding()
@@ -85,13 +78,7 @@ struct WorkoutDetailView: View {
                                     .accessibilityLabel("\(workout.objective)Workout Description")
                             }
                             
-                            
-                            HStack {
-                                
-                                Text("Workout Type: ")
-                                    .font(.system(size: 22, weight: .bold, design: .default))
-                                Spacer()
-                                Text("\(workout.type)")
+                                Text("\(workout.type) Type Workout.")
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .padding()
                                     .background(Color(UIColor.tertiarySystemFill))
@@ -106,12 +93,12 @@ struct WorkoutDetailView: View {
                         .navigationBarTitleDisplayMode(.inline)
                         .navigationBarItems(trailing: Button("Edit") {
                             isPresented = true
-                            //  data = scrum.data
+                            //  data = workout.data
                         })
                         .navigationTitle(workout.title)
                         .fullScreenCover(isPresented: $isPresented) {
                             NavigationView {
-                                WorkoutEditView()
+                                WorkoutEditView(workout: workout)
                                     .navigationTitle(workout.title)
                                     .navigationBarItems(leading: Button("Cancel") {
                                         isPresented = false
@@ -122,8 +109,4 @@ struct WorkoutDetailView: View {
                     }
                  
                 }
-            }
-        }
-    }
-
     

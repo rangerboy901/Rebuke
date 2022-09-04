@@ -2,7 +2,7 @@
 //  WorkoutListView.swift
 //  Rebuke
 //
-//  Created by Joseph Wil;liam DeWeese on 8/24/22.
+//  Created by Joseph William DeWeese on 8/24/22.
 //
 
 import SwiftUI
@@ -71,6 +71,8 @@ struct WorkoutCell: View {
         switch type {
         case "HIIT":
             return .blue
+        case "Recover":
+            return .indigo
         case "Strength":
             return .orange
         case "Cardio":
@@ -98,7 +100,7 @@ struct WorkoutCell: View {
             Text(workout.objective)
                 .font(.footnote)
                 .fontWeight(.semibold)
-                .foregroundColor(.blue)
+                .foregroundColor(self.colorize(type: workout.type ))
                 .accessibilityLabel("\(workout.objective)Workout Description")
             
             HStack{
@@ -112,9 +114,14 @@ struct WorkoutCell: View {
                         Capsule().stroke(self.colorize(type: workout.type ), lineWidth: 3.0)
                     )}
             .padding(.trailing, 15)
+            
             .cornerRadius(10)
             
         }
+        .padding(.all, 15)
+        .overlay(
+            RoundedRectangle(cornerSize: .zero).stroke(self.colorize(type: workout.type ), lineWidth: 5.0)
+        )
     }
 }
            
