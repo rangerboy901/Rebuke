@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct RebukeApp: App {
+    init() {
+        UITableView.appearance().separatorStyle = .none
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WorkoutListView()
         }
     }
 }

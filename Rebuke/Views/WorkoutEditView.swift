@@ -1,0 +1,20 @@
+//
+//  WorkoutEditView.swift
+//  Rebuke
+//
+//  Created by Joseph Wil;liam DeWeese on 8/26/22.
+//
+
+import SwiftUI
+
+struct WorkoutEditView: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
+struct WorkoutEditView_Previews: PreviewProvider {
+    static var previews: some View {
+        WorkoutEditView()
+    }
+}
