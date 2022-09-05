@@ -10,10 +10,11 @@ import CoreData
 import SwiftUI
 
 class WorkoutListViewModel: ObservableObject {
-    
+  ///JWD:  PROPERTIES
     @Published var workouts = [WorkoutViewModel]()
     
-    func colorize(type: String) -> Color {
+   ///JWD:  COLORIZING FUNCTION FOR WORKOUT TYPE
+    func Colorize(type: String) -> Color {
         switch type {
         case "HIIT":
             return .blue
@@ -30,25 +31,31 @@ class WorkoutListViewModel: ObservableObject {
             
         }
     }
+    ///JWD:  DELETE WORKOUT
     func deleteWorkout(workout: WorkoutViewModel) {
-        let workout: Workout? = Workout.byId(id: workout.workoutId)
+        let workout = CoreDataManager.shared.getWorkoutById(id: workout.id)
         if let workout = workout {
-            try? workout.delete()
+            CoreDataManager.shared.deleteWorkout(workout)
         }
     }
-    
+    ///JWD:   GET ALL WORKOUTS
     func getAllWorkouts() {
+        
+        let workouts = CoreDataManager.shared.getAllWorkouts()
         DispatchQueue.main.async {
             self.workouts = Workout.all().map(WorkoutViewModel.init)
         }
     }
 }
-
+///JWD:  WORKOUT VIEW MODEL
 struct WorkoutViewModel {
     
     let workout: Workout
     
     var workoutId: NSManagedObjectID {
+        return workout.objectID
+    }
+    var id: NSManagedObjectID {
         return workout.objectID
     }
     

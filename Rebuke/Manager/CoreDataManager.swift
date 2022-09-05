@@ -31,8 +31,27 @@ class CoreDataManager {
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-    //:JWD  GET ALL WORKOUTS
-    
+    ///JWD:  DELETE WORKOUT
+    func deleteWorkout(_ workout: Workout) {
+        
+        persistentContainer.viewContext.delete(workout)
+        do{
+             try persistentContainer.viewContext.save()
+        }catch{
+            persistentContainer.viewContext.rollback()
+            print("Failed to delete workout \(error)")
+        }
+    }
+    ///JWD:  GET WORKOUT BY ID
+    func getWorkoutById(id:NSManagedObjectID) -> Workout? {
+        do{
+            return try persistentContainer.viewContext.existingObject(with: id) as? Workout
+        }catch{
+           print("error")
+            return nil
+        }
+    }
+    ///JWD:  GET ALL WORKOUTS
     func getAllWorkouts() -> [Workout] {
         let fetchRequest: NSFetchRequest<Workout> = Workout.fetchRequest()
         do{
@@ -41,7 +60,7 @@ class CoreDataManager {
             return[]
         }
     }
-    //JWD:  SAVE
+    ///JWD:  SAVE
     func save(){
         do{
             try persistentContainer.viewContext.save()

@@ -14,7 +14,7 @@ struct RebukeApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            WorkoutListView()
+            WorkoutListScreen()
         }
     }
 }

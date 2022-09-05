@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct AddWorkoutView: View {
+struct AddWorkoutScreen: View {
     
     @StateObject private var addWorkoutVM = AddWorkoutViewModel()
     @Environment(\.presentationMode) var presentationMode
-    @State private var color: Color = Color.clear
+    
     @State private var priority: String = "Strength"
     let types = ["Strength", "Power", "Cardio", "HIIT", "Recover"]
     
@@ -78,6 +78,6 @@ struct AddWorkoutView: View {
 }
 struct AddWorkoutView_Previews: PreviewProvider {
     static var previews: some View {
-        AddWorkoutView()
+        AddWorkoutScreen()
     }
 }

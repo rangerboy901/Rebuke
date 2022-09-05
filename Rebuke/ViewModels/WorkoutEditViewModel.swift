@@ -7,7 +7,7 @@
 
 import Foundation
 import CoreData
-
+import SwiftUI
 
 class WorkoutEditViewModel: ObservableObject {
     
@@ -23,10 +23,23 @@ class WorkoutEditViewModel: ObservableObject {
         self.type = type
         self.releaseDate = releaseDate
         }
-    
-    
-    
-    
+    func colorize(type: String) -> Color {
+        switch type {
+        case "HIIT":
+            return .blue
+        case "Strength":
+            return .orange
+        case "Cardio":
+            return .pink
+        case "Power":
+            return .green
+        default:
+            return .gray
+            
+        }
+    }
+
+
     func save() {
         
         let workout = Workout(context: Workout.viewContext)
