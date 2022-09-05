@@ -29,7 +29,7 @@ struct WorkoutListView: View {
             
             ForEach(workoutListVM.workouts, id: \.workoutId) { workout in
                 NavigationLink(
-                    destination: WorkoutDetailView( workout: workout),
+                    destination: WorkoutDetailView(),
                     label: {
                         WorkoutCell(workout: workout)
                     })

@@ -2,7 +2,7 @@
 //  TimerView.swift
 //  Rebuke
 //
-//  Created by Joseph Wil;liam DeWeese on 8/25/22.
+//  Created by Joseph William DeWeese on 8/25/22.
 //
 
 import SwiftUI

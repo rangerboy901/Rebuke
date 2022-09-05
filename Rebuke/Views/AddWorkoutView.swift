@@ -2,7 +2,7 @@
 //  AddWorkoutView.swift
 //  Rebuke
 //
-//  Created by Joseph Wil;liam DeWeese on 8/24/22.
+//  Created by Joseph William DeWeese on 8/24/22.
 //
 
 import SwiftUI
@@ -12,28 +12,30 @@ struct AddWorkoutView: View {
     @StateObject private var addWorkoutVM = AddWorkoutViewModel()
     @Environment(\.presentationMode) var presentationMode
     @State private var color: Color = Color.clear
-    @State private var newExercise = ""
+    @State private var priority: String = "Strength"
     let types = ["Strength", "Power", "Cardio", "HIIT", "Recover"]
     
     
     
     var body: some View {
         Form{
-            Section(header: Text("Workout Details")) {
-                TextField("Enter workout name", text:
-                            $addWorkoutVM.title)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-                .background(Color(UIColor.tertiarySystemFill))
-                .cornerRadius(10)
-                .font(.system(size: 20, weight: .bold, design: .default))
-                TextField("Enter workout objective", text: $addWorkoutVM.objective)
+            Section(header: Text("Add Workout")) {
+                TextField("Enter name of workout...", text:$addWorkoutVM.title)
+                
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                     .background(Color(UIColor.tertiarySystemFill))
                     .cornerRadius(10)
                     .font(.system(size: 20, weight: .bold, design: .default))
-                
+            
+                Section("WorkoutObjective 📝"){
+                    TextEditor(text: $addWorkoutVM.objective)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                        .background(Color(UIColor.tertiarySystemFill))
+                        .cornerRadius(10)
+                        .font(.system(size: 20, weight: .bold, design: .default))
+                }
                 Text("Workout Type:")
                 Picker("Workout Type:", selection: $addWorkoutVM.type) {
                     ForEach(types, id: \.self) {
@@ -41,38 +43,39 @@ struct AddWorkoutView: View {
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                Divider()
+               
                 
-                    DatePicker("Release Date:", selection: $addWorkoutVM.releaseDate)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
-                        .background(Color(UIColor.tertiarySystemFill))
-                        .cornerRadius(10)
-                        .font(.system(size: 17, weight: .semibold, design: .default))
-                    
-                    
-                }
-                HStack {
-                    Spacer()
-                    Button("Save"){
-                        
-                        addWorkoutVM.save()
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                    
-                    .font(.system(size: 20, weight: .bold, design: .default))
+                DatePicker("Date Created:", selection: $addWorkoutVM.releaseDate)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .background(.blue)
+                    .background(Color(UIColor.tertiarySystemFill))
                     .cornerRadius(10)
-                    .foregroundColor(Color.white)
+                    .font(.system(size: 17, weight: .semibold, design: .default))
+                
+                
+            }
+            .foregroundColor(.primary)
+            HStack {
+                Spacer()
+                Button("Save"){
+                    
+                    addWorkoutVM.save()
+                    presentationMode.wrappedValue.dismiss()
                 }
-            }//  #endOf FORM
-            .navigationBarTitle("Add Workout", displayMode: .inline)
-        }
+                
+                .font(.system(size: 20, weight: .bold, design: .default))
+                .padding()
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .background(.blue)
+                .cornerRadius(10)
+                .foregroundColor(Color.white)
+            }
+            
+        }//  #endOf FORM
+        .navigationTitle("Add Workout")
     }
     
-
+}
 struct AddWorkoutView_Previews: PreviewProvider {
     static var previews: some View {
         AddWorkoutView()

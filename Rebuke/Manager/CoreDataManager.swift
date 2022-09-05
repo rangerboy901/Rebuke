@@ -31,7 +31,26 @@ class CoreDataManager {
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
+    //:JWD  GET ALL WORKOUTS
     
+    func getAllWorkouts() -> [Workout] {
+        let fetchRequest: NSFetchRequest<Workout> = Workout.fetchRequest()
+        do{
+            return try persistentContainer.viewContext.fetch(fetchRequest)
+        }catch{
+            return[]
+        }
+    }
+    //JWD:  SAVE
+    func save(){
+        do{
+            try persistentContainer.viewContext.save()
+        }catch{
+            print("Failed to save \(error)")
+        }
+    }
 }
+
+
 
 

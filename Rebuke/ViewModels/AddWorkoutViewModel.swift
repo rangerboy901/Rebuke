@@ -11,18 +11,20 @@ class AddWorkoutViewModel: ObservableObject {
     
     var title: String = ""
     var objective: String = ""
-    var type: String = ""
+    var type: String = "HIIT"
     var releaseDate: Date = Date()
     
+    let types = ["Strength", "Power", "Cardio", "HIIT", "Recover"]
+    
     func save() {
-        
-        let workout = Workout(context: Workout.viewContext)
+        let manager = CoreDataManager.shared
+        let workout = Workout(context: manager.persistentContainer.viewContext)
         workout.title = title
         workout.objective = objective
         workout.type = type
         workout.releaseDate = releaseDate
         
-        try? workout.save()
+        manager.save()
     }
     
 }
