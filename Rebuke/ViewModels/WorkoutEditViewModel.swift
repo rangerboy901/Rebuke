@@ -22,7 +22,7 @@ class WorkoutEditViewModel: ObservableObject {
         self.objective = objective
         self.type = type
         self.releaseDate = releaseDate
-        }
+    }
     func colorize(type: String) -> Color {
         switch type {
         case "HIIT":
@@ -38,39 +38,55 @@ class WorkoutEditViewModel: ObservableObject {
             
         }
     }
-
-
+    
+    
     func save() {
-        
-        let workout = Workout(context: Workout.viewContext)
+        let manager = CoreDataManager.shared
+        let workout = Workout(context: manager.persistentContainer.viewContext)
         workout.title = title
         workout.objective = objective
         workout.type = type
         workout.releaseDate = releaseDate
         
-        try? workout.save()
+        manager.save()
     }
-   
-        struct Data {
-            var title: String = ""
-            var objective: String = ""
-            var type: String = ""
+    
+    struct Data {
+        var title: String = ""
+        var objective: String = ""
+        var type: String = ""
+    }
+    
+    var data: Data {
+        return Data(title: title, objective: objective, type: type)
+    }
+    
+        //        for attendee in data.attendees {
+        //            if !attendees.contains(attendee) {
+        //                self.attendeeList.append(attendee)
+        //            }
+        //        }
+        
+    }
+
+extension Workout {
+    struct Data {
+        var title: String = ""
+        var objective: String = ""
+        var type: String = ""
+       
+    }
+
+    var data: Data {
+        return Data(title: title!, objective: objective!, type: type!)
+    }
+    
+    func update(from data: Data) {
+        title = data.title
+        objective = data.objective
+        type = data.type
+            }
         }
         
-        var data: Data {
-            return Data(title: title, objective: objective, type: type)
-        }
-        
-        func update(from data: Data) {
-            title = data.title
-            objective = data.objective
-            type = data.type
-            //        for attendee in data.attendees {
-            //            if !attendees.contains(attendee) {
-            //                self.attendeeList.append(attendee)
-            //            }
-            //        }
-            
-        }
-    }
+       
 

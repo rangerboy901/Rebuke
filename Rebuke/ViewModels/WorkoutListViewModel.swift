@@ -41,7 +41,7 @@ class WorkoutListViewModel: ObservableObject {
     ///JWD:   GET ALL WORKOUTS
     func getAllWorkouts() {
         
-        let workouts = CoreDataManager.shared.getAllWorkouts()
+        _ = CoreDataManager.shared.getAllWorkouts()
         DispatchQueue.main.async {
             self.workouts = Workout.all().map(WorkoutViewModel.init)
         }
@@ -73,7 +73,5 @@ struct WorkoutViewModel {
     var releaseDate: String? {
         return workout.releaseDate?.asFormattedString()
     }
-
 }
-
 

@@ -76,7 +76,7 @@ struct AddWorkoutScreen: View {
     }
     
 }
-struct AddWorkoutView_Previews: PreviewProvider {
+struct EditWorkoutScreen_Previews: PreviewProvider {
     static var previews: some View {
         AddWorkoutScreen()
     }

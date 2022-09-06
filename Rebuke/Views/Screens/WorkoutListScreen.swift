@@ -11,8 +11,7 @@ struct WorkoutListScreen: View {
    ///JWD:  PROPERTIES
     @StateObject private var workoutListVM = WorkoutListViewModel()
     @State private var isPresented: Bool = false
-    
-    
+
     private func deleteWorkout(at indexSet: IndexSet) {
         indexSet.forEach { index in
             let workout = workoutListVM.workouts[index]

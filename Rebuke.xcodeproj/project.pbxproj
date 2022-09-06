@@ -35,6 +35,7 @@
 		4A2F404328B86F2A00FFE0B6 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F404228B86F2A00FFE0B6 /* ThemeModel.swift */; };
 		4A2F404528B86F5900FFE0B6 /* ThemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F404428B86F5900FFE0B6 /* ThemeData.swift */; };
 		4A2F404728B86F8400FFE0B6 /* ThemeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F404628B86F8400FFE0B6 /* ThemeSettings.swift */; };
+		4A77C11F28C7066000FD249E /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A77C11E28C7066000FD249E /* HapticsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		4A2F404228B86F2A00FFE0B6 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		4A2F404428B86F5900FFE0B6 /* ThemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeData.swift; sourceTree = "<group>"; };
 		4A2F404628B86F8400FFE0B6 /* ThemeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettings.swift; sourceTree = "<group>"; };
+		4A77C11E28C7066000FD249E /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				4A2F402A28B6F3EA00FFE0B6 /* CoreDataManager.swift */,
+				4A77C11E28C7066000FD249E /* HapticsManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				4A2F402328B6F1D200FFE0B6 /* HistoryModel.swift in Sources */,
 				4A2F403328B6F77F00FFE0B6 /* WorkoutListScreen.swift in Sources */,
 				4A0442CB28C599F700ED7227 /* WorkoutDetailScreen.swift in Sources */,
+				4A77C11F28C7066000FD249E /* HapticsManager.swift in Sources */,
 				4A0442CD28C6466300ED7227 /* WorkoutCell.swift in Sources */,
 				4A2F402B28B6F3EA00FFE0B6 /* CoreDataManager.swift in Sources */,
 				4A2F402F28B6F5F500FFE0B6 /* ViewExtension.swift in Sources */,
